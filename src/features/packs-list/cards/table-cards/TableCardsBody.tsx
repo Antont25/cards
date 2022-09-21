@@ -7,13 +7,14 @@ import edit from '../../../../assets/images/cardPackBtns/edit.svg';
 import {DeleteModal} from '../../../../common/components/modals/delete-modal/DeleteModal';
 import deleteImg from '../../../../assets/images/cardPackBtns/delete.svg';
 import {CardType, CreateCardType} from '../cards-api';
+import {dateConverter, timeConverter} from '../../../../common/utils/date-converter';
 
 type TableCardsBodyParams = {
     cards: CardType[]
     isMy: boolean
     updateCardHandler: (id: string, params: CreateCardType) => void
     deleteCardHandler: (id: string) => void
-    isDesktopWidth:boolean
+    isDesktopWidth: boolean
 }
 
 export const TableCardsBody = (props: TableCardsBodyParams) => {
@@ -47,7 +48,10 @@ export const TableCardsBody = (props: TableCardsBodyParams) => {
                     </TableCell>
 
                     {props.isDesktopWidth &&
-                    <TableCell align="left">{card.updated.slice(0, 10)}</TableCell>
+                        <TableCell align="left">
+                            {dateConverter(card.updated)}<br></br>
+                            {timeConverter(card.updated)}
+                        </TableCell>
                     }
 
                     {props.isDesktopWidth &&

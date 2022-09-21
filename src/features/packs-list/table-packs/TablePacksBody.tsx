@@ -11,6 +11,7 @@ import {useAppDispatch} from '../../../common/hooks/useAppDispatch';
 import {changePackNameTC, deletePackTC} from '../packs-reducer';
 import {EditAddModalPack} from '../edit-add-modal-pack/EditAddModalPack';
 import {DeleteModal} from '../../../common/components/modals/delete-modal/DeleteModal';
+import {dateConverter, timeConverter} from '../../../common/utils/date-converter';
 
 
 type CustomTableRowPropsType = {
@@ -37,9 +38,9 @@ export const TablePacksBody = ({el, myID, onClickNameHandler, width}: CustomTabl
     }
 
     const studyBtnClasses = isNoCards ? `${styles.btn} ${styles.btnDisabled}` : `${styles.btn}`
-    const alignAdaptiveRight = width < 991 ? "left" : "right"
-    const alignAdaptiveCenter = width < 991 ? "center" : "left"
-    const adaptivePadding = width < 991 ? "10px 0 10px 10px" : "16px"
+    const alignAdaptiveRight = width < 991 ? 'left' : 'right'
+    const alignAdaptiveCenter = width < 991 ? 'center' : 'left'
+    const adaptivePadding = width < 991 ? '10px 0 10px 10px' : '16px'
 
     return (
         <TableRow key={el._id} sx={{'&:last-child td, &:last-child th': {border: 0}}}>
@@ -52,12 +53,12 @@ export const TablePacksBody = ({el, myID, onClickNameHandler, width}: CustomTabl
                            overflowWrap: 'break-word'
                        }}
             >
-                <div style={{display: "flex", alignItems: "center", gap: "8px",flexWrap: "wrap"}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap'}}>
                     {
                         //Проверка на длины строки поставил, т.к. в некоторых колодах вместо адреса
                         // или base64 хардкодили текст типа "Some cover" и отображалась битая картинка
                         el.deckCover && el.deckCover.length > 15 &&
-                        <img src={el.deckCover} style={{width: "60px", height: "40px", objectFit: "contain"}}/>
+                        <img src={el.deckCover} style={{width: '60px', height: '40px', objectFit: 'contain'}}/>
                     }
                     {el.name}
                 </div>
@@ -66,7 +67,11 @@ export const TablePacksBody = ({el, myID, onClickNameHandler, width}: CustomTabl
                 padding: `${adaptivePadding}`
             }}>{el.cardsCount}</TableCell>
             {
-                width > 991 && <TableCell align="left">{el.updated.toString()}</TableCell>
+                width > 991
+                && <TableCell align="left">
+                    {dateConverter(el.updated)}<br></br>
+                    {timeConverter(el.updated)}
+                </TableCell>
             }
             {
                 width > 576 && <TableCell align="left">{el.user_name}</TableCell>
