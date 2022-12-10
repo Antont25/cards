@@ -1,39 +1,51 @@
-import React, {useEffect, useState} from 'react';
-import styles from './UserInfo.module.css'
-import avatar from '../../../../assets/images/profileAvatar.jpg'
-import {Button} from "@mui/material";
-import {NavLink, useNavigate} from "react-router-dom";
+import React, { ReactElement, useEffect, useState } from 'react';
 
-import {logoutTC} from "../../../../features/auth/auth-reducer";
-import {useAppDispatch} from '../../../hooks/useAppDispatch';
+import { Button } from '@mui/material';
+import { NavLink, useNavigate } from 'react-router-dom';
+
+import styles from './style/UserInfo.module.css';
+
+import defaultAvatar from 'assets/images/profileAvatar.jpg';
+import { RoutePath } from 'common/enums';
+import { useAppDispatch } from 'common/hooks';
+import { logoutTC } from 'features/auth/auth-reducer';
 
 type UserInfoPropsType = {
-    name: string
-    avatar?: string
-}
-
-export const UserInfo = (props: UserInfoPropsType) => {
-    const [width, setWidth] = useState(0)
-    const dispatch = useAppDispatch()
-    const navigate = useNavigate()
-    const onClickHandler = () => {
-        dispatch(logoutTC())
-        navigate("/login", {replace: true})
-    }
-
-    const avatarImg = props.avatar ? props.avatar : avatar
-    useEffect(() => {
-        setWidth(window.innerWidth)
-    }, [])
-
-    return (
-        <div className={styles.wrapper}>
-            <NavLink to={"/profile"} className={styles.userName}>{props.name}</NavLink>
-            <img className={styles.avatarImg} src={avatarImg} alt="avatar"/>
-            {
-                width > 991 &&  <Button size="small" variant="contained" onClick={onClickHandler}>Log Out</Button>
-            }
-        </div>
-    );
+  name: string;
+  avatar?: string;
 };
 
+export const UserInfo = ({ name, avatar }: UserInfoPropsType): ReactElement => {
+  const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+
+  const [width, setWidth] = useState(0);
+
+  const onLogOutClick = (): void => {
+    dispatch(logoutTC());
+
+    navigate(RoutePath.LOGIN, { replace: true });
+  };
+
+  const avatarImg = avatar || defaultAvatar;
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
+
+  return (
+    <div className={styles.wrapper}>
+      <NavLink to="/profile" className={styles.userName}>
+        {name}
+      </NavLink>
+      <img className={styles.avatarImg} src={avatarImg} alt="avatar" />
+      {/* eslint-disable-next-line no-magic-numbers */}
+      {width > 991 && (
+        <Button size="small" variant="contained" onClick={onLogOutClick}>
+          Log Out
+        </Button>
+      )}
+    </div>
+  );
+};

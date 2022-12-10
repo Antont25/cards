@@ -1,64 +1,77 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from 'react'
-import styles from './CustomInput.module.css'
-import {Button} from "@mui/material";
+import React, {
+  ChangeEvent,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+  KeyboardEvent,
+} from 'react';
 
+import styles from './style/CustomInput.module.css';
 
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type DefaultInputPropsType = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 type SuperInputTextPropsType = DefaultInputPropsType & {
-    onChangeText?: (value: string) => void
-    onEnter?: () => void
-    error?: string
-    spanClassName?: string
-    label?: string
-    value: string
-}
+  onChangeText?: (value: string) => void;
+  onEnter?: () => void;
+  error?: string;
+  spanClassName?: string;
+  label?: string;
+  value: string;
+};
 
-export const CustomInput: React.FC<SuperInputTextPropsType> = (
-    {
-        value,
-        label,
-        type,
-        onChange, onChangeText,
-        onKeyPress, onEnter,
-        error,
-        className, spanClassName,
-        children,
-        ...restProps
-    }
-) => {
-    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(e)
-        onChangeText && onChangeText(e.currentTarget.value)
-    }
-    const onKeyPressCallback = (e: KeyboardEvent<HTMLInputElement>) => {
-        onKeyPress && onKeyPress(e);
-        onEnter && e.key === 'Enter' && onEnter()
-    }
-    const onClickSaveHandler = () => {
-        onChangeText && onChangeText(value)
-    }
-    const finalSpanClassName = `${styles.error} ${spanClassName ? spanClassName : ''}`
-    const finalInputClassName = `${error ? styles.error : ''} ${styles.input} ${className}`
+export const CustomInput: React.FC<SuperInputTextPropsType> = ({
+  value,
+  label,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  type,
+  onChange,
+  onChangeText,
+  onKeyPress,
+  onEnter,
+  error,
+  className,
+  spanClassName,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  children,
+  ...restProps
+}) => {
+  const finalSpanClassName = `${styles.error} ${spanClassName || ''}`;
+  const finalInputClassName = `${error ? styles.error : ''} ${styles.input} ${className}`;
 
-    return (
-        <div className={styles.fieldOuter}>
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    if (onChange) onChange(e);
+    if (onChangeText) onChangeText(e.currentTarget.value);
+  };
+  const onKeyPressClick = (e: KeyboardEvent<HTMLInputElement>): void => {
+    if (onKeyPress) onKeyPress(e);
+    // eslint-disable-next-line no-unused-expressions
+    onEnter && e.key === 'Enter' && onEnter();
+  };
 
-            <input
-                value={value}
-                type={'text'}
-                onChange={onChangeCallback}
-                onKeyPress={onKeyPressCallback}
-                className={finalInputClassName}
+  const onSaveClick = (): void => {
+    if (onChangeText) onChangeText(value);
+  };
 
-                {...restProps}
-            />
-            <label className={styles.label} htmlFor={label}>{label}</label>
-            {error && <span className={finalSpanClassName}>{error}</span>}
-            <button className={styles.saveBtn}
-                    onClick={onClickSaveHandler}
-            >save
-            </button>
-        </div>
-    )
-}
+  return (
+    <div className={styles.fieldOuter}>
+      <input
+        value={value}
+        type="text"
+        onChange={onInputChange}
+        onKeyPress={onKeyPressClick}
+        className={finalInputClassName}
+        {...restProps}
+      />
+      <label className={styles.label} htmlFor={label}>
+        {label}
+      </label>
+      {error && <span className={finalSpanClassName}>{error}</span>}
+      {/* eslint-disable-next-line react/button-has-type */}
+      <button className={styles.saveBtn} onClick={onSaveClick}>
+        save
+      </button>
+    </div>
+  );
+};

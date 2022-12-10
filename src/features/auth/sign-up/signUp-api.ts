@@ -1,18 +1,18 @@
-import {instance} from "../../../app/app-api";
+import { instance } from '../../../app/api/app-api';
 
-//api
+// api
 export const signUpApi = {
-    signUp(signUpData: SignUpDataType) {
-        return instance.post('auth/register', signUpData)
-    }
-}
-//types
+  signUp(signUpData: SignUpDataType) {
+    return instance.post('auth/register', signUpData);
+  },
+};
+// types
 export type SignUpDataType = {
-    email: string
-    password: string
-}
+  email: string;
+  password: string;
+};
 export type SignUpErrorType = {
-    error: string
-    email: string
-    in: string
-}
+  error: string;
+  email: string;
+  in: string;
+};

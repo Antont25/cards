@@ -1,120 +1,139 @@
-import {NewPackType, packsAPI, PacksGetParamsType, PacksType, UpdatePackType} from './packs-api';
-import {AppThunk} from '../../app/store';
-import {handleServerNetworkError} from '../../common/utils/error-utils';
-import {AxiosError} from 'axios';
-import {setAppStatusAC} from '../../app/app-reducer';
-/*---Reducer---*/
+import { AxiosError } from 'axios';
+
+import { AppThunk } from '../../common/store/store';
+import { handleServerNetworkError } from '../../common/utils/error-utils';
+
+import {
+  NewPackType,
+  packsAPI,
+  PacksGetParamsType,
+  PacksType,
+  UpdatePackType,
+} from './packs-api';
+
+import { setAppStatusAC } from 'app/reducer/app-reducer';
+/* ---Reducer---*/
 export const initState: PacksReducerInitStateType = {
-    packs: {
-        cardPacks: [],
-        cardPacksTotalCount: 0,
-        maxCardsCount: 0,
-        minCardsCount: 0,
-        page: 1,
-        pageCount: 5,
-    },
-    queryParams: {
-        packName: undefined,
-        min: undefined,
-        max: undefined,
-        sortPacks: undefined,
-        page: 1,
-        pageCount: 10,
-        user_id: undefined,
-    },
-    filters: {
-        ownerSwitcher: 'all'
-    }
-}
+  packs: {
+    cardPacks: [],
+    cardPacksTotalCount: 0,
+    maxCardsCount: 0,
+    minCardsCount: 0,
+    page: 1,
+    pageCount: 5,
+  },
+  queryParams: {
+    packName: undefined,
+    min: undefined,
+    max: undefined,
+    sortPacks: undefined,
+    page: 1,
+    pageCount: 10,
+    user_id: undefined,
+  },
+  filters: {
+    ownerSwitcher: 'all',
+  },
+};
 
-export const packsReducer = (state = initState, action: PacksActionType): PacksReducerInitStateType => {
-    switch (action.type) {
-        case 'PACKS/SET-PACKS':
-            return {...state, packs: action.packs}
-        case 'PACKS/UPDATE-QUERY-PARAMS':
-            return {...state, queryParams: {...state.queryParams, ...action.params}}
-        case 'PACKS/FILTER-OWNER-SWITCHER':
-            return {...state, filters: {...state.filters, ownerSwitcher: action.filter}}
-        default:
-            return state
-    }
-}
+export const packsReducer = (
+  state = initState,
+  action: PacksActionType,
+): PacksReducerInitStateType => {
+  switch (action.type) {
+    case 'PACKS/SET-PACKS':
+      return { ...state, packs: action.packs };
+    case 'PACKS/UPDATE-QUERY-PARAMS':
+      return { ...state, queryParams: { ...state.queryParams, ...action.params } };
+    case 'PACKS/FILTER-OWNER-SWITCHER':
+      return { ...state, filters: { ...state.filters, ownerSwitcher: action.filter } };
+    default:
+      return state;
+  }
+};
 
-//actions
+// actions
 export const setPacksAC = (packs: PacksType) =>
-    ({type: 'PACKS/SET-PACKS', packs} as const)
+  ({ type: 'PACKS/SET-PACKS', packs } as const);
 
 export const updateQueryParamsAC = (params: PacksGetParamsType) =>
-    ({type: 'PACKS/UPDATE-QUERY-PARAMS', params} as const)
+  ({ type: 'PACKS/UPDATE-QUERY-PARAMS', params } as const);
 
 export const filterPacksWithOwnerSwitcherAC = (filter: OwnerSwitcherType) =>
-    ({type: 'PACKS/FILTER-OWNER-SWITCHER', filter} as const)
+  ({ type: 'PACKS/FILTER-OWNER-SWITCHER', filter } as const);
 
-//types
-export type OwnerSwitcherType = 'all' | 'my'
+// types
+export type OwnerSwitcherType = 'all' | 'my';
 export type PacksFiltersType = {
-    ownerSwitcher: OwnerSwitcherType
-}
+  ownerSwitcher: OwnerSwitcherType;
+};
 
 export type PacksActionType =
-    ReturnType<typeof setPacksAC>
-    | ReturnType<typeof updateQueryParamsAC>
-    | ReturnType<typeof filterPacksWithOwnerSwitcherAC>
+  | ReturnType<typeof setPacksAC>
+  | ReturnType<typeof updateQueryParamsAC>
+  | ReturnType<typeof filterPacksWithOwnerSwitcherAC>;
 
 export type PacksReducerInitStateType = {
-    packs: PacksType
-    queryParams: PacksGetParamsType
-    filters: PacksFiltersType
-}
-/*---Thunk---*/
-export const getPacksTC = (queryParams: PacksGetParamsType): AppThunk => async (dispatch, getState) => {
+  packs: PacksType;
+  queryParams: PacksGetParamsType;
+  filters: PacksFiltersType;
+};
+/* ---Thunk---*/
+export const getPacksTC =
+  (queryParams: PacksGetParamsType): AppThunk =>
+  async (dispatch, getState) => {
     try {
-        dispatch(setAppStatusAC('loading'))
-        dispatch(updateQueryParamsAC(queryParams))
+      dispatch(setAppStatusAC('loading'));
+      dispatch(updateQueryParamsAC(queryParams));
 
-        const params = getState().packs.queryParams
-        const response = await packsAPI.getPacks(params)
+      const params = getState().packs.queryParams;
+      const response = await packsAPI.getPacks(params);
 
-        dispatch(setPacksAC(response))
-        dispatch(setAppStatusAC('succeeded'))
+      dispatch(setPacksAC(response));
+      dispatch(setAppStatusAC('succeeded'));
     } catch (e) {
-        handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch)
+      handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch);
     }
-}
+  };
 
-export const addNewPackTC = (newPack: NewPackType): AppThunk => async dispatch => {
+export const addNewPackTC =
+  (newPack: NewPackType): AppThunk =>
+  async dispatch => {
     try {
-        dispatch(setAppStatusAC('loading'))
-        await packsAPI.addNewPack(newPack)
-        dispatch(getPacksTC({}))
-
+      dispatch(setAppStatusAC('loading'));
+      await packsAPI.addNewPack(newPack);
+      dispatch(getPacksTC({}));
     } catch (e) {
-        handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch)
+      handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch);
     } finally {
-        dispatch(setAppStatusAC('succeeded'))
+      dispatch(setAppStatusAC('succeeded'));
     }
-}
+  };
 
-export const changePackNameTC = (updatedPack: UpdatePackType): AppThunk => async dispatch => {
+export const changePackNameTC =
+  (updatedPack: UpdatePackType): AppThunk =>
+  async dispatch => {
     try {
-        dispatch(setAppStatusAC('loading'))
-        await packsAPI.changePackName(updatedPack)
-        dispatch(getPacksTC({}))
+      dispatch(setAppStatusAC('loading'));
+      await packsAPI.changePackName(updatedPack);
+      dispatch(getPacksTC({}));
     } catch (e) {
-        handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch)
+      handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch);
     } finally {
-        dispatch(setAppStatusAC('succeeded'))
+      dispatch(setAppStatusAC('succeeded'));
     }
-}
+  };
 
-export const deletePackTC = (id: string): AppThunk => async dispatch => {
+export const deletePackTC =
+  (id: string): AppThunk =>
+  async dispatch => {
     try {
-        dispatch(setAppStatusAC('loading'))
-        await packsAPI.deletePack(id)
-        dispatch(getPacksTC({}))
+      dispatch(setAppStatusAC('loading'));
+      await packsAPI.deletePack(id);
+      dispatch(getPacksTC({}));
     } catch (e) {
-        handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch)
+      handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch);
     } finally {
-        dispatch(setAppStatusAC('succeeded'))
+      dispatch(setAppStatusAC('succeeded'));
     }
-}
+  };

@@ -20,7 +20,7 @@
     content: '';
     top: calc(50% - 12px);
     right: 0px;
-    background-image: url("../../../assets/images/pen.svg");
+    background-image: url("../../../../assets/images/pen.svg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

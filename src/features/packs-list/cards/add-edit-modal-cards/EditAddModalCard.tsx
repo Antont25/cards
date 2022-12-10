@@ -10,7 +10,7 @@ import {convertFileToBase64} from '../../../../common/utils/convert-base64';
 import {CreateCardType} from '../cards-api';
 import style from './EditAddModalCard.module.css'
 import common from '../../../../common/style/style.module.css';
-import {setAppErrorAC} from '../../../../app/app-reducer';
+import {setAppErrorAC} from 'app/reducer/app-reducer';
 import {useAppDispatch} from '../../../../common/hooks/useAppDispatch';
 
 

@@ -1,88 +1,100 @@
-import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState, ChangeEvent} from 'react'
+import React, {
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+  HTMLAttributes,
+  useState,
+  ChangeEvent,
+} from 'react';
 
-import styles from './EditableSpan.module.css'
-import {CustomInput} from "../customInput/CustomInput";
+import styles from './style/EditableSpan.module.css';
 
+import { CustomInput } from 'common/components/customInput';
 
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
-
+type DefaultInputPropsType = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+type DefaultSpanPropsType = DetailedHTMLProps<
+  HTMLAttributes<HTMLSpanElement>,
+  HTMLSpanElement
+>;
 
 type EditableSpanType = DefaultInputPropsType & {
-    onChangeText?: (value: string) => void
-    onEnter?: () => void
-    error?: string
-    spanClassName?: string
-    label: string
-    spanProps?: DefaultSpanPropsType
-    value:string
-}
+  onChangeText?: (value: string) => void;
+  onEnter?: () => void;
+  error?: string;
+  spanClassName?: string;
+  label: string;
+  spanProps?: DefaultSpanPropsType;
+  value: string;
+};
 
-export const EditableSpan: React.FC<EditableSpanType> = (
-    {
-        value,
-        onChangeText,
-        label,
-        autoFocus,
-        onBlur,
-        onEnter,
-        spanProps,
+export const EditableSpan: React.FC<EditableSpanType> = ({
+  value,
+  onChangeText,
+  label,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  autoFocus,
+  onBlur,
+  onEnter,
+  spanProps,
 
-        ...restProps
-    }
-) => {
-    const [editMode, setEditMode] = useState<boolean>(false)
-    const [text, setText] = useState(value)
-    const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {}
+  ...restProps
+}) => {
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [text, setText] = useState(value);
 
-    const onEnterCallback = () => {
-        setEditMode(false) // выключить editMode при нажатии Enter
-        onEnter && onEnter()
-        if (text)
-            onChangeText && onChangeText(text)
-    }
-    const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
-        setEditMode(false) // выключить editMode при нажатии за пределами инпута
-        onBlur && onBlur(e)
-        if (text)
-            onChangeText && onChangeText(text)
-    }
-    const onDoubleClickCallBack = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        setEditMode(true) // включить editMode при двойном клике
+  const { children, onDoubleClick, className, ...restSpanProps } = spanProps || {};
 
-        onDoubleClick && onDoubleClick(e)
-    }
+  const onEnterClick = (): void => {
+    setEditMode(false);
+    if (onEnter) onEnter();
+    // eslint-disable-next-line no-unused-expressions
+    if (text) onChangeText && onChangeText(text);
+  };
 
-    const spanClassName = `${styles.span} ${className}`
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setText(e.currentTarget.value)
-    }
+  const onInputBlur = (e: React.FocusEvent<HTMLInputElement>): void => {
+    setEditMode(false); // выключить editMode при нажатии за пределами инпута
+    if (onBlur) onBlur(e);
+    // eslint-disable-next-line no-unused-expressions
+    if (text) onChangeText && onChangeText(text);
+  };
 
-    return (
-        <>
-            {editMode
-                ? (
-                    <CustomInput
-                        label={label}
-                        value={text}
-                        autoFocus
-                        onBlur={onBlurCallback}
-                        onEnter={onEnterCallback}
-                        onChange={onChangeHandler}
-                        {...restProps}
-                    />
-                ) : (
-                    <span
-                        onDoubleClick={onDoubleClickCallBack}
-                        className={spanClassName}
+  const onDoubleClickCallBack = (
+    e: React.MouseEvent<HTMLSpanElement, MouseEvent>,
+  ): void => {
+    setEditMode(true);
 
-                        {...restSpanProps}
-                    >
-                        {children || value}
-                    </span>
-                )
-            }
-        </>
-    )
-}
+    if (onDoubleClick) onDoubleClick(e);
+  };
 
+  const spanClassName = `${styles.span} ${className}`;
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setText(e.currentTarget.value);
+  };
+
+  return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {editMode ? (
+        <CustomInput
+          label={label}
+          value={text}
+          autoFocus
+          onBlur={onInputBlur}
+          onEnter={onEnterClick}
+          onChange={onInputChange}
+          {...restProps}
+        />
+      ) : (
+        <span
+          onDoubleClick={onDoubleClickCallBack}
+          className={spanClassName}
+          {...restSpanProps}
+        >
+          {children || value}
+        </span>
+      )}
+    </>
+  );
+};

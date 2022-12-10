@@ -4,12 +4,13 @@ import {Navigate, NavLink} from 'react-router-dom';
 import Paper from '@mui/material/Paper/Paper';
 import img from '../../assets/images/profileAvatar.jpg'
 import {useAppSelector} from '../../common/hooks/useAppSelector';
-import {EditableSpan} from '../../common/components/editableSpan/EditableSpan';
+import {EditableSpan} from '../../common/components/editableSpan' +
+  '';
 import {useAppDispatch} from '../../common/hooks/useAppDispatch';
 import {changeNameAndAvatarTC, logoutTC} from '../auth/auth-reducer';
 import commonStyle from '../../common/style/style.module.css';
 import {routePath} from '../../common/constants/routePath';
-import {setAppErrorAC} from "../../app/app-reducer";
+import {setAppErrorAC} from "app/reducer/app-reducer";
 import {convertFileToBase64} from "../../common/utils/convert-base64";
 
 export const Profile = () => {

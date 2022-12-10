@@ -1,11 +1,14 @@
-import React from 'react';
-import {NavLink} from "react-router-dom";
-import styles from "./BackToPacksLink.module.css";
-import {routePath} from "../../constants/routePath";
+import React, { ReactElement } from 'react';
 
-export const BackToPacksLink = () => {
-    return (
-        <NavLink className={styles.packsLink} to={routePath.cards.packList}>Back to Packs List</NavLink>
-    );
+import { NavLink } from 'react-router-dom';
+
+import styles from 'common/components/back-to-packs-link/style/BackToPacksLink.module.css';
+import { RoutePath } from 'common/enums';
+
+export const BackToPacksLink = (): ReactElement => {
+  return (
+    <NavLink className={styles.packsLink} to={RoutePath.PACK_LIST}>
+      Back to Packs List
+    </NavLink>
+  );
 };
-

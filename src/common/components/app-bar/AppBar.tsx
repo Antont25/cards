@@ -1,42 +1,46 @@
-import React from 'react';
-import styles from './AppBar.module.css'
-import logo from '../../../assets/images/logo1.jpeg'
-import {useNavigate} from 'react-router-dom';
-import {useAppSelector} from '../../hooks/useAppSelector';
-import {UserInfo} from "./userInfo/UserInfo";
-import Button from "@mui/material/Button";
+import React, { ReactElement } from 'react';
 
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
-export const AppBar = () => {
-    const navigate = useNavigate();
-    const isAuth = useAppSelector(state => state.auth.isAuth)
-    const name = useAppSelector(state => state.auth.authData.name)
-    const avatar = useAppSelector(state => state.auth.authData.avatar)
+import styles from './style/AppBar.module.css';
+import { UserInfo } from './userInfo';
 
-    const onClickHandler = () => {
-        navigate('/login', {replace: true})
-    }
+import logo from 'assets/images/logo1.jpeg';
+import { RoutePath } from 'common/enums';
+import { useAppSelector } from 'common/hooks';
+import { selectAvatar, selectIsAuth, selectName } from 'common/store';
 
-    return (
-        <div className={styles.wrapper}>
-            <div className={'container'}>
-                <div className={styles.inner}>
-                    <a href="#" className={styles.logoLink}>
-                        <img src={logo} alt="logo" className={styles.logoImg}/>
-                    </a>
-                    <div>
-                        {
-                           isAuth
-                                ? <UserInfo name={name} avatar={avatar}/>
-                                : <Button className={styles.btn}
-                                          variant={'contained'}
-                                          onClick={onClickHandler}>Sign In</Button>
-                        }
-                    </div>
-                </div>
-            </div>
+export const AppBar = (): ReactElement => {
+  const navigate = useNavigate();
 
+  const isAuth = useAppSelector(selectIsAuth);
+  const name = useAppSelector(selectName);
+  const avatar = useAppSelector(selectAvatar);
+
+  const onSignInClick = (): void => {
+    navigate(RoutePath.LOGIN, { replace: true });
+  };
+
+  return (
+    <div className={styles.wrapper}>
+      <div className="container">
+        <div className={styles.inner}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a href="#" className={styles.logoLink}>
+            <img src={logo} alt="logo" className={styles.logoImg} />
+          </a>
+          <div>
+            {isAuth ? (
+              <UserInfo name={name} avatar={avatar} />
+            ) : (
+              <Button className={styles.btn} variant="contained" onClick={onSignInClick}>
+                Sign In
+              </Button>
+            )}
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
-

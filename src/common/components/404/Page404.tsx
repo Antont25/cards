@@ -1,7 +1,10 @@
-import style from './page404.module.css'
-import { NavLink } from 'react-router-dom'
+import { ReactElement } from 'react';
 
-export const Page404 = () => {
+import { NavLink } from 'react-router-dom';
+
+import style from 'common/components/404/style/page404.module.css';
+
+export const Page404 = (): ReactElement => {
   return (
     <div className={style.mainbox}>
       <div className={style.err}>4</div>
@@ -10,12 +13,13 @@ export const Page404 = () => {
       </div>
       <div className={style.err2}>4</div>
       <div className={style.msg}>
-        Maybe this page moved? Got deleted? Is hiding out in quarantine? Never existed in the first
-        place?
+        Maybe this page moved? Got deleted? Is hiding out in quarantine? Never existed in
+        the first place?
         <p>
-          Let's go <NavLink to={'/'}>home</NavLink> and try from there.
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
+          Let's go <NavLink to="/">home</NavLink> and try from there.
         </p>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -17,7 +17,7 @@ import {routePath} from '../../../common/constants/routePath';
 import commonStyle from '../../../common/style/style.module.css';
 import Typography from '@mui/material/Typography';
 import {Box} from '@mui/material';
-import {setAppStatusAC} from '../../../app/app-reducer';
+import {setAppStatusAC} from 'app/reducer/app-reducer';
 
 type FormikErrorType = {
     email?: string

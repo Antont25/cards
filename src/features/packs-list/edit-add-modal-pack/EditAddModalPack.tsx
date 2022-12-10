@@ -7,7 +7,7 @@ import Box from "@mui/material/Box/Box";
 import style from "../cards/add-edit-modal-cards/EditAddModalCard.module.css";
 import Button from "@mui/material/Button/Button";
 import {convertFileToBase64} from "../../../common/utils/convert-base64";
-import {setAppErrorAC} from "../../../app/app-reducer";
+import {setAppErrorAC} from "app/reducer/app-reducer";
 import {useAppDispatch} from "../../../common/hooks/useAppDispatch";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
