@@ -11,7 +11,7 @@ import deleteImg from 'assets/images/cardPackBtns/delete.svg';
 import edit from 'assets/images/cardPackBtns/edit.svg';
 import study from 'assets/images/cardPackBtns/study.svg';
 import { DeleteModal } from 'common/components/modals/delete-modal/DeleteModal';
-import styles from 'common/components/table/Table.module.css';
+import styles from 'common/components/table/style/Table.module.css';
 import { RoutePath } from 'common/enums';
 import { useAppDispatch, useAppSelector } from 'common/hooks';
 import { Nullable } from 'common/store';

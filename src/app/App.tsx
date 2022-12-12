@@ -5,7 +5,7 @@ import { LinearProgress } from '@mui/material';
 
 import { AppBar } from 'common/components/app-bar/AppBar';
 import { ErrorSnackbar } from 'common/components/errorSnackbar/ErrorSnackbar';
-import { Loading } from 'common/components/loading/Loading';
+import { Loading } from 'common/components/loading';
 import { WhichRouting } from 'common/components/routes/WhichRouting';
 import { useAppDispatch } from 'common/hooks/useAppDispatch';
 import { useAppSelector } from 'common/hooks/useAppSelector';

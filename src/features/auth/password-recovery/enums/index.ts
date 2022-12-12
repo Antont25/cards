@@ -1,0 +1,1 @@
+export { ActionPasswordRecoveryType } from './ActionPasswordRecoveryType';

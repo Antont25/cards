@@ -9,7 +9,7 @@ import {
   saveState,
 } from 'common/utils/local-utils';
 import { authReducer } from 'features/auth/auth-reducer';
-import { passwordRecoveryReducer } from 'features/auth/password-recovery/password-recovery-reducer';
+import { passwordRecoveryReducer } from 'features/auth/password-recovery/reducer/password-recovery-reducer';
 import { signUpReducer } from 'features/auth/sign-up/signUp-reducer';
 import { cardsReducer } from 'features/packs-list/cards/cards-reducer';
 import { initState, packsReducer } from 'features/packs-list/packs-reducer';

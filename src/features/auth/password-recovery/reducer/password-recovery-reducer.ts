@@ -1,29 +1,34 @@
 import { AxiosError } from 'axios';
 
-import { AppThunk } from '../../../common/store/store';
-import { handleServerNetworkError } from '../../../common/utils/error-utils';
-
-import { api, DataPasswordRecoveryType } from './api-password-recovery';
-
-import { setAppStatusAC } from 'app/reducer/app-reducer';
+import { setAppStatusAC } from 'app/actions';
+import { AppThunk } from 'common/store';
+import { handleServerNetworkError } from 'common/utils/error-utils';
+import { setEmail } from 'features/auth/password-recovery/actions';
+import { api } from 'features/auth/password-recovery/api/api-password-recovery';
+import { PasswordRecoveryActionType } from 'features/auth/password-recovery/enums/ActionPasswordRecoveryType';
+import {
+  ActionPasswordRecoveryType,
+  DataPasswordRecoveryType,
+  PasswordRecoveryType,
+} from 'features/auth/password-recovery/types';
 
 const initialState: PasswordRecoveryType = {
   email: null,
 };
 
 export const passwordRecoveryReducer = (
+  // eslint-disable-next-line default-param-last
   state = initialState,
   action: ActionPasswordRecoveryType,
 ): PasswordRecoveryType => {
   switch (action.type) {
-    case 'PS/SET-EMAIL':
+    case PasswordRecoveryActionType.SET_EMAIL:
       return { ...state, email: action.email };
     default:
       return state;
   }
 };
-// action
-export const setEmail = (email: string) => ({ type: 'PS/SET-EMAIL', email } as const);
+
 // thunk
 export const passwordRecoveryLink =
   (email: string): AppThunk =>
@@ -36,7 +41,7 @@ export const passwordRecoveryLink =
 
     dispatch(setAppStatusAC('loading'));
     try {
-      const res = await api.fetchPasswordRecoveryLink(data);
+      await api.fetchPasswordRecoveryLink(data);
 
       dispatch(setEmail(email));
       dispatch(setAppStatusAC('succeeded'));
@@ -49,15 +54,10 @@ export const updatePassword =
   async dispatch => {
     dispatch(setAppStatusAC('loading'));
     try {
-      const res = api.fetchUpdatePassword({ password, resetPasswordToken });
+      await api.fetchUpdatePassword({ password, resetPasswordToken });
 
       dispatch(setAppStatusAC('succeeded'));
     } catch (e) {
       handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch);
     }
   };
-// type
-export type PasswordRecoveryType = {
-  email: string | null;
-};
-export type ActionPasswordRecoveryType = ReturnType<typeof setEmail>;

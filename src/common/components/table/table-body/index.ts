@@ -1,0 +1,1 @@
+export { CustomTableBody } from './CustomTableBody';
