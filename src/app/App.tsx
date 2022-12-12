@@ -10,7 +10,7 @@ import { WhichRouting } from 'common/components/routes/WhichRouting';
 import { useAppDispatch } from 'common/hooks/useAppDispatch';
 import { useAppSelector } from 'common/hooks/useAppSelector';
 import { selectInitializeApp, selectStatus } from 'common/store';
-import { initializeAppTC } from 'features/auth/auth-reducer';
+import { initializeAppTC } from 'features/auth/reducer/auth-reducer';
 
 export const App = (): ReactElement => {
   const dispatch = useAppDispatch();

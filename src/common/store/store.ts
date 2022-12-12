@@ -8,9 +8,9 @@ import {
   loadStateOwnerSwitcher,
   saveState,
 } from 'common/utils/local-utils';
-import { authReducer } from 'features/auth/auth-reducer';
-import { passwordRecoveryReducer } from 'features/auth/password-recovery/reducer/password-recovery-reducer';
-import { signUpReducer } from 'features/auth/sign-up/signUp-reducer';
+import { passwordRecoveryReducer } from 'features/auth/components/password-recovery/reducer/password-recovery-reducer';
+import { signUpReducer } from 'features/auth/components/sign-up/reducer/signUp-reducer';
+import { authReducer } from 'features/auth/reducer/auth-reducer';
 import { cardsReducer } from 'features/packs-list/cards/cards-reducer';
 import { initState, packsReducer } from 'features/packs-list/packs-reducer';
 

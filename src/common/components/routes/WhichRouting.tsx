@@ -4,10 +4,10 @@ import { Route, Routes } from 'react-router-dom';
 
 import { Page404 } from 'common/components/404';
 import { RoutePath } from 'common/enums';
-import { Login } from 'features/auth/login/Login';
-import { NewPassword } from 'features/auth/new-password/NewPassword';
-import { PasswordRecovery } from 'features/auth/password-recovery/PasswordRecovery';
-import { SignUp } from 'features/auth/sign-up/SignUp';
+import { Login } from 'features/auth/components/login/Login';
+import { NewPassword } from 'features/auth/components/new-password/NewPassword';
+import { PasswordRecovery } from 'features/auth/components/password-recovery/PasswordRecovery';
+import { SignUp } from 'features/auth/components/sign-up/SignUp';
 import { LearnCards } from 'features/learn-cards/LearnCards';
 import { NewPack } from 'features/pack/NewPack';
 import { Cards } from 'features/packs-list/cards/Cards';

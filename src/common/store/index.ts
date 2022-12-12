@@ -5,6 +5,8 @@ export {
   selectIsAuth,
   selectName,
   selectAvatar,
+  selectEmail,
+  selectIsSignUp,
 } from 'common/store/selectors';
 export type {
   ActionsType,
