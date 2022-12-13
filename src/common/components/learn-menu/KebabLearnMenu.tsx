@@ -15,8 +15,11 @@ import styles from 'common/components/table/style/Table.module.css';
 import { RoutePath } from 'common/enums';
 import { useAppDispatch, useAppSelector } from 'common/hooks';
 import { Nullable } from 'common/store';
-import { EditAddModalPack } from 'features/packs-list/edit-add-modal-pack/EditAddModalPack';
-import { changePackNameTC, deletePackTC } from 'features/packs-list/packs-reducer';
+import { EditAddModalPack } from 'features/packs-list/components/edit-add-modal-pack/EditAddModalPack';
+import {
+  changePackNameTC,
+  deletePackTC,
+} from 'features/packs-list/reducers/packsReducer';
 
 type KebabLearnMenuPropsType = {
   packId: Nullable<string> | undefined;

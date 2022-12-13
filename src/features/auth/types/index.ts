@@ -4,8 +4,18 @@ export type {
   LoginPostDataType,
   ChangeNameResponseType,
   LogoutType,
-} from './auth-api-type';
-
+} from './AuthApiType';
 export type { AuthActionsType } from './AuthActionsType';
+export type { InitAuthStateType } from './InitAuthStateType';
 
-export type { InitAuthStateType } from './initAuthStateType';
+export type { SignUpErrorType, SignUpDataType } from './SignUpApiType';
+export type { SignUpStateType } from './SignUpStateType';
+export type { SignUpActionsType } from './SignUpActionsType';
+
+export type { PasswordRecoveryActionType } from './PasswordRecoveryActionType';
+export type { PasswordRecoveryStateType } from './PasswordRecoveryStateType';
+export type {
+  DataPasswordRecoveryType,
+  DataUpdatePassword,
+  ResponsePasswordRecovery,
+} from './PasswordRecoveryType';

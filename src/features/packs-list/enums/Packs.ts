@@ -1,0 +1,5 @@
+export enum Packs {
+  SET_PACKS = '[Packs] SET-PACKS',
+  UPDATE_QUERY_PARAMS = '[Packs] UPDATE-QUERY-PARAMS',
+  FILTER_OWNER_SWITCHER = '[Packs] FILTER-OWNER-SWITCHER',
+}

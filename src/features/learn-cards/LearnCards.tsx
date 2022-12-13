@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
 import { FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import Button from '@mui/material/Button/Button';
@@ -7,20 +7,18 @@ import Grid from '@mui/material/Grid/Grid';
 import Paper from '@mui/material/Paper/Paper';
 import { Navigate, useParams } from 'react-router-dom';
 
-import { BackToPacksLink } from '../../common/components/back-to-packs-link';
-import { routePath } from '../../common/constants/routePath';
-import { useAppDispatch } from '../../common/hooks/useAppDispatch';
-import { useAppSelector } from '../../common/hooks/useAppSelector';
-import { CardType } from '../packs-list/cards/cards-api';
+import { setAppErrorAC } from 'app/actions';
+import { BackToPacksLink } from 'common/components/back-to-packs-link';
+import { RoutePath } from 'common/enums';
+import { useAppDispatch, useAppSelector } from 'common/hooks';
+import { selectCards, selectIsAuth, selectPackName } from 'common/store';
+import style from 'features/learn-cards/style/LearnCards.module.css';
+import { CardType } from 'features/packs-list/api/apiCards';
 import {
   fetchCards,
   setQueryParams,
   updateCardGradeTC,
-} from '../packs-list/cards/cards-reducer';
-
-import style from './LearnCards.module.css';
-
-import { setAppErrorAC } from 'app/reducer/app-reducer';
+} from 'features/packs-list/reducers/cardsReducer';
 
 const grades = [
   'Did not know',
@@ -51,8 +49,9 @@ const initObj = {
   __v: 0,
 };
 
-const getCard = (cards: CardType[]) => {
+const getCard = (cards: CardType[]): any => {
   const sum = cards.reduce((acc, card) => {
+    // eslint-disable-next-line no-magic-numbers
     if (card.grade !== undefined) return acc + (6 - card.grade) * (6 - card.grade);
 
     return 0;
@@ -61,6 +60,7 @@ const getCard = (cards: CardType[]) => {
   const res = cards.reduce(
     (acc: { sum: number; id: number }, card, i) => {
       if (card.grade !== undefined) {
+        // eslint-disable-next-line no-magic-numbers
         const newSum = acc.sum + (6 - card.grade) * (6 - card.grade);
 
         return { sum: newSum, id: newSum < rand ? i : acc.id };
@@ -74,19 +74,19 @@ const getCard = (cards: CardType[]) => {
   return cards[res.id + 1];
 };
 
-export const LearnCards = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [value, setValue] = useState(0);
-  const [first, setFirst] = useState<boolean>(true);
-  const [card, setCard] = useState<CardType>(initObj);
-
+export const LearnCards = (): ReactElement => {
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
 
-  const isAuth = useAppSelector(state => state.auth.isAuth);
-  const cards = useAppSelector(state => state.cards.dateCard.cards);
-  const packName = useAppSelector(state => state.cards.dateCard.packName);
+  const isAuth = useAppSelector(selectIsAuth);
+  const cards = useAppSelector(selectCards);
+  const packName = useAppSelector(selectPackName);
+
+  const [isChecked, setIsChecked] = useState(false);
+  const [value, setValue] = useState(0);
+  const [first, setFirst] = useState<boolean>(true);
+  const [card, setCard] = useState<CardType>(initObj);
 
   useEffect(() => {
     if (first) {
@@ -97,14 +97,15 @@ export const LearnCards = () => {
     if (cards.length > 0) setCard(getCard(cards));
   }, [dispatch, id, cards, first]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(parseInt(event.target.value));
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setValue(parseInt(event.target.value, 10));
   };
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     if (value !== 0) {
       setIsChecked(false);
 
       if (cards.length > 0) {
+        // eslint-disable-next-line no-underscore-dangle
         dispatch(updateCardGradeTC({ grade: value, card_id: card._id }));
         setCard(getCard(cards));
         setValue(0);
@@ -114,11 +115,12 @@ export const LearnCards = () => {
     }
   };
   const formControlLabels = grades.map((g, i) => (
+    // eslint-disable-next-line react/no-array-index-key
     <FormControlLabel value={i + 1} control={<Radio />} key={`grade-${i}`} label={g} />
   ));
 
   if (!isAuth) {
-    return <Navigate to={routePath.auth.login} />;
+    return <Navigate to={RoutePath.LOGIN} />;
   }
 
   return (

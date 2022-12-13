@@ -8,7 +8,7 @@ import styles from './style/UserInfo.module.css';
 import defaultAvatar from 'assets/images/profileAvatar.jpg';
 import { RoutePath } from 'common/enums';
 import { useAppDispatch } from 'common/hooks';
-import { logoutTC } from 'features/auth/reducer/auth-reducer';
+import { logoutTC } from 'features/auth/reducer/authReducer';
 
 type UserInfoPropsType = {
   name: string;

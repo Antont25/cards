@@ -1,11 +1,11 @@
-import { AuthResponseType } from 'features/auth/api/auth-api';
+import { AuthResponseType } from 'features/auth/api/apiAuth';
 import {
   authReducer,
   changeNameAndAvatarAC,
   initAuthStateType,
   logOutAC,
   setAuthAC,
-} from 'features/auth/reducer/auth-reducer';
+} from 'features/auth/reducer/authReducer';
 
 let startState: initAuthStateType;
 

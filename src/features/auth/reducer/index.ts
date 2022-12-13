@@ -4,4 +4,12 @@ export {
   LoginTC,
   logoutTC,
   authReducer,
-} from './auth-reducer';
+} from './authReducer';
+
+export {
+  passwordRecoveryLink,
+  passwordRecoveryReducer,
+  updatePassword,
+} from './passwordRecoveryReducer';
+
+export { signUpReducer, signUpTC } from './signUpReducer';

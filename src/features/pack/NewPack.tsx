@@ -1,25 +1,27 @@
-import React from 'react';
-import styles from './NewPack.module.css';
-import {BackToPacksLink} from "../../common/components/back-to-packs-link/BackToPacksLink";
-import Button from "@mui/material/Button/Button";
+import React, { ReactElement } from 'react';
 
+import Button from '@mui/material/Button/Button';
 
-export const NewPack = () => {
+import { BackToPacksLink } from 'common/components/back-to-packs-link';
+import styles from 'features/pack/style/NewPack.module.css';
 
-    const onClickHandler = ()=>{
-        alert("see you next week")
-    }
+export const NewPack = (): ReactElement => {
+  const onAddNewCardClick = (): void => {
+    alert('see you next week');
+  };
 
-    return (
-        <div className={styles.wrapper}>
-            <BackToPacksLink/>
-            <h2 className={styles.title}>Name Pack</h2>
-            <p className={styles.descr}>This pack is empty. Click add new card to fill this pack</p>
-            <div className={styles.btnWrapper}>
-                <Button variant="contained" onClick={onClickHandler}>Add new card</Button>
-            </div>
-
-        </div>
-    );
+  return (
+    <div className={styles.wrapper}>
+      <BackToPacksLink />
+      <h2 className={styles.title}>Name Pack</h2>
+      <p className={styles.descr}>
+        This pack is empty. Click add new card to fill this pack
+      </p>
+      <div className={styles.btnWrapper}>
+        <Button variant="contained" onClick={onAddNewCardClick}>
+          Add new card
+        </Button>
+      </div>
+    </div>
+  );
 };
-

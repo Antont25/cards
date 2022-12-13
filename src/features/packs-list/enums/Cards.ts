@@ -1,0 +1,5 @@
+export enum Cards {
+  UPDATE_CARD_GRADE = '[Cards] UPDATE-CARD-GRADE',
+  SET_QUERY_PARAMS = '[Cards] SET-QUERY-PARAMS',
+  SET_DATE_CARD = '[Cards] SET-DATE-CARD',
+}

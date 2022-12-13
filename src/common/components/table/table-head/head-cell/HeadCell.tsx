@@ -4,7 +4,7 @@ import { TableCell, TableSortLabel } from '@mui/material';
 
 import { useAppSelector } from 'common/hooks';
 import { selectStatus } from 'common/store';
-import { HeadCellType } from 'features/packs-list/table-packs/TablePacks';
+import { HeadCellType } from 'features/packs-list/components/table-packs/TablePacks';
 
 type HeadCellPropsType = {
   sortCallback?: (queryString: string) => void;

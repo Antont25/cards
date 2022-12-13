@@ -8,11 +8,11 @@ import {
   loadStateOwnerSwitcher,
   saveState,
 } from 'common/utils/local-utils';
-import { passwordRecoveryReducer } from 'features/auth/components/password-recovery/reducer/password-recovery-reducer';
-import { signUpReducer } from 'features/auth/components/sign-up/reducer/signUp-reducer';
-import { authReducer } from 'features/auth/reducer/auth-reducer';
-import { cardsReducer } from 'features/packs-list/cards/cards-reducer';
-import { initState, packsReducer } from 'features/packs-list/packs-reducer';
+import { authReducer } from 'features/auth/reducer/authReducer';
+import { passwordRecoveryReducer } from 'features/auth/reducer/passwordRecoveryReducer';
+import { signUpReducer } from 'features/auth/reducer/signUpReducer';
+import { cardsReducer } from 'features/packs-list/reducers/cardsReducer';
+import { initState, packsReducer } from 'features/packs-list/reducers/packsReducer';
 
 export const rootReducer = combineReducers({
   signUp: signUpReducer,

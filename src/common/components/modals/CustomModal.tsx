@@ -38,7 +38,7 @@ type CustomModalType = {
   deleteStyle: boolean;
   isClosed?: boolean;
   setDataOnClose?: () => void;
-  onClickSaveHandle: () => void;
+  onSaveClick: () => void;
 };
 
 export const CustomModal = ({
@@ -46,7 +46,7 @@ export const CustomModal = ({
   children,
   isClosed,
   setDataOnClose,
-  onClickSaveHandle,
+  onSaveClick,
   title,
   deleteStyle,
 }: CustomModalType): ReactElement => {
@@ -59,10 +59,6 @@ export const CustomModal = ({
   const handleOpenClose = (): void => {
     setOpen(!open);
     if (setDataOnClose) setDataOnClose();
-  };
-
-  const onSaveClick = (): void => {
-    onClickSaveHandle();
   };
 
   useEffect(() => {

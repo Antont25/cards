@@ -7,7 +7,7 @@ import {useAppSelector} from '../../common/hooks/useAppSelector';
 import {EditableSpan} from '../../common/components/editableSpan' +
   '';
 import {useAppDispatch} from '../../common/hooks/useAppDispatch';
-import {changeNameAndAvatarTC, logoutTC} from 'features/auth/reducer/auth-reducer';
+import {changeNameAndAvatarTC, logoutTC} from 'features/auth/reducer/authReducer';
 import commonStyle from '../../common/style/style.module.css';
 import {routePath} from '../../common/constants/routePath';
 import {setAppErrorAC} from "app/reducer/app-reducer";
