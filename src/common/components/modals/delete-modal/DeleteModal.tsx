@@ -20,7 +20,7 @@ export const DeleteModal: FC<DeleteModalType> = ({
       title={title}
       childrenDiv={childrenDiv}
       deleteStyle
-      onClickSaveHandler={deleteCallback}
+      onSaveClick={deleteCallback}
     >
       <p style={{ marginBottom: '5px' }}>
         Do you really want to remove <b>{name}</b>?

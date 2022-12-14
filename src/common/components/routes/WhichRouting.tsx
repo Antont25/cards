@@ -4,15 +4,15 @@ import { Route, Routes } from 'react-router-dom';
 
 import { Page404 } from 'common/components/404';
 import { RoutePath } from 'common/enums';
-import { Login } from 'features/auth/components/Login/Login';
-import { NewPassword } from 'features/auth/components/NewPassword/NewPassword';
-import { PasswordRecovery } from 'features/auth/components/PasswordRecovery/PasswordRecovery';
-import { SignUp } from 'features/auth/components/SignUp/SignUp';
-import { LearnCards } from 'features/learn-cards/LearnCards';
-import { NewPack } from 'features/pack/NewPack';
-import { Cards } from 'features/packs-list/components/Cards/Cards';
-import { PacksPage } from 'features/packs-list/PacksPage';
-import { Profile } from 'features/profile/Profile';
+import { Login } from 'features/Auth/components/Login/Login';
+import { NewPassword } from 'features/Auth/components/NewPassword/NewPassword';
+import { PasswordRecovery } from 'features/Auth/components/PasswordRecovery/PasswordRecovery';
+import { SignUp } from 'features/Auth/components/SignUp/SignUp';
+import { LearnCards } from 'features/LearnCards/LearnCards';
+import { NewPack } from 'features/Pack/NewPack';
+import { Cards } from 'features/PacksList/components/Cards/Cards';
+import { PacksPage } from 'features/PacksList/PacksPage';
+import { Profile } from 'features/Profile/Profile';
 
 export const WhichRouting = (): ReactElement => {
   return (

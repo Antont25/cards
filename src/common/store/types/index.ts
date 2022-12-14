@@ -6,9 +6,9 @@ import {
   AuthActionsType,
   PasswordRecoveryActionType,
   SignUpActionsType,
-} from 'features/auth/types';
-import { CardActionType } from 'features/packs-list/reducers/cardsReducer';
-import { PacksActionType } from 'features/packs-list/types/PacksActionType';
+} from 'features/Auth/types';
+import { CardActionType } from 'features/PacksList/types';
+import { PacksActionType } from 'features/PacksList/types/PacksActionType';
 
 export type ActionsType =
   | AppActionsType

@@ -29,6 +29,7 @@
     "redux-thunk": "^2.4.1",
     "typescript": "*",
     "web-vitals": "^2.1.0",
+    "yarn": "^1.22.19",
     "yup": "^0.32.11"
   },
   "scripts": {

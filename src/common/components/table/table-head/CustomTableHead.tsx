@@ -4,7 +4,7 @@ import { TableCell, TableHead, TableRow } from '@mui/material';
 
 import { HeadCell } from './head-cell';
 
-import { HeadCellType } from 'features/packs-list/components/table-packs/TablePacks';
+import { HeadCellType } from 'features/PacksList/components/TablePacks/TablePacks';
 
 export type CustomTableHeadPropsType = {
   headCells: Array<HeadCellType>;

@@ -1,4 +1,4 @@
-import { AppStatusType } from 'app/reducer/app-reducer';
+import { AppStatusType } from 'app/types';
 import { AppActionType } from 'common/enums';
 import { Nullable } from 'common/store';
 

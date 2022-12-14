@@ -6,9 +6,10 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 
-import App from './app/App';
-import { store } from './common/store/store';
 import reportWebVitals from './reportWebVitals';
+
+import { App } from 'app';
+import { store } from 'common/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

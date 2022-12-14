@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 
 import { TableBody } from '@mui/material';
 
-import { PackType } from 'features/packs-list/api/apiPacks';
-import { TablePacksBody } from 'features/packs-list/components/table-packs/TablePacksBody';
+import { TablePacksBody } from 'features/PacksList/components/TablePacks/TablePacksBody';
+import { PackType } from 'features/PacksList/types';
 
 type CustomTableBodyPropsType = {
   elements: Array<PackType>;

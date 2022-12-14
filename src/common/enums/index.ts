@@ -1,3 +1,4 @@
-export { BaseURL } from './baseURL';
+export { BaseURL } from './BaseURL';
 export { AppActionType } from './actions';
-export { RoutePath } from './routePatch';
+export { RoutePath } from './RoutePath';
+export { ScreenSize } from './ScreenSize';
