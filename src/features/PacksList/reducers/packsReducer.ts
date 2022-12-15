@@ -64,8 +64,6 @@ export const getPacksTC =
       const params = getState().packs.queryParams;
       const response = await apiPacks.getPacks(params);
 
-      // eslint-disable-next-line no-debugger
-      debugger;
       dispatch(setPacksAC(response));
       dispatch(setAppStatusAC('succeeded'));
     } catch (e) {
