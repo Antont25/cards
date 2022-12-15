@@ -1,7 +1,7 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
-import { appReducer } from 'app/reducer/app-reducer';
+import { appReducer } from 'app/reducer/appReducer';
 import {
   loadStateMaxCards,
   loadStateMinCards,

@@ -6,7 +6,7 @@ import { EditAddModalPack } from './components/EditAddModalPack/EditAddModalPack
 import { PacksTitle } from './components/PacksTitle/PacksTitle';
 import { Settings } from './components/Settings/Settings';
 import { CardsTable } from './components/TablePacks/TablePacks';
-import styles from './style/PacksPage.module.css';
+import styles from 'features/PacksList/style/packs-page.module.css';
 
 import { useAppDispatch, useAppSelector } from 'common/hooks';
 import {

@@ -8,11 +8,11 @@ import Paper from '@mui/material/Paper/Paper';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { setAppErrorAC } from 'app/actions';
-import { BackToPacksLink } from 'common/components/back-to-packs-link';
+import { BackToPacksLink } from 'common/components/BackToPacksLink';
 import { RoutePath } from 'common/enums';
 import { useAppDispatch, useAppSelector } from 'common/hooks';
 import { selectCards, selectIsAuth, selectPackName } from 'common/store';
-import style from 'features/LearnCards/style/LearnCards.module.css';
+import style from 'features/LearnCards/style/learn-cards.module.css';
 import { setQueryParams } from 'features/PacksList/actions';
 import { fetchCards, updateCardGradeTC } from 'features/PacksList/reducers/cardsReducer';
 import { CardType } from 'features/PacksList/types';

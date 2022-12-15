@@ -6,9 +6,9 @@ import React, {
   ChangeEvent,
 } from 'react';
 
-import styles from './style/EditableSpan.module.css';
+import styles from 'common/components/EditableSpan/style/editable-span.module.css';
 
-import { CustomInput } from 'common/components/customInput';
+import { CustomInput } from 'common/components/CustomInput';
 
 type DefaultInputPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,

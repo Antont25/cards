@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import styles from './style/UserInfo.module.css';
+import styles from 'common/components/AppBar/UserInfo/style/user-info.module.css';
 
 import defaultAvatar from 'assets/images/profileAvatar.jpg';
 import { RoutePath } from 'common/enums';

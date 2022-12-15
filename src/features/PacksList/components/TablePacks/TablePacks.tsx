@@ -5,10 +5,10 @@ import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import { useNavigate } from 'react-router-dom';
 
-import { Loading } from 'common/components/loading/Loading';
-import { Paginator } from 'common/components/pagination/Paginator';
-import { CustomTableBody } from 'common/components/table/table-body/CustomTableBody';
-import { CustomTableHead } from 'common/components/table/table-head/CustomTableHead';
+import { Loading } from 'common/components/Loading/Loading';
+import { Paginator } from 'common/components/Pagination/Paginator';
+import { CustomTableBody } from 'common/components/Table/TableBody/CustomTableBody';
+import { CustomTableHead } from 'common/components/Table/TableHead/CustomTableHead';
 import { ScreenSize } from 'common/enums';
 import { useAppDispatch } from 'common/hooks/useAppDispatch';
 import { useAppSelector } from 'common/hooks/useAppSelector';

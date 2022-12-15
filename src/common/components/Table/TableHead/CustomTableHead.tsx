@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 
 import { TableCell, TableHead, TableRow } from '@mui/material';
 
-import { HeadCell } from './head-cell';
+import { HeadCell } from './HeadCell';
 
 import { HeadCellType } from 'features/PacksList/components/TablePacks/TablePacks';
 

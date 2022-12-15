@@ -5,7 +5,7 @@ import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'common/hooks';
 import { selectOwnerSwitcher } from 'common/store';
 import { filterPacksWithOwnerSwitcherAC } from 'features/PacksList/actions';
-import styles from 'features/PacksList/components/Settings/OwnerSwitcher/style/OwnerSwitcher.module.css';
+import styles from 'features/PacksList/components/Settings/OwnerSwitcher/style/owner-switcher.module.css';
 import { styleDisabled } from 'features/PacksList/components/Settings/Settings';
 import { OwnerSwitcherType } from 'features/PacksList/types';
 

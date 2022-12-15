@@ -6,10 +6,10 @@ import Button from '@mui/material/Button/Button';
 import InputLabel from '@mui/material/InputLabel/InputLabel';
 import TextField from '@mui/material/TextField';
 
-import style from './style/EditAddModalCard.module.css';
+import style from 'features/PacksList/components/Cards/components/AddEditModalCards/style/edit-add-modal-card.module.css';
 
 import { setAppErrorAC } from 'app/actions';
-import { CustomModal } from 'common/components/modals/CustomModal';
+import { CustomModal } from 'common/components/Modals/CustomModal';
 import { useAppDispatch } from 'common/hooks/useAppDispatch';
 import commonStyle from 'common/style/style.module.css';
 import { convertFileToBase64 } from 'common/utils/convert-base64';

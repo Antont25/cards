@@ -7,7 +7,7 @@ import { CardsSlider } from 'features/PacksList/components/Settings/CardsSlider'
 import { DisableFilterButton } from 'features/PacksList/components/Settings/DisableFilterButton';
 import { OwnerSwitcher } from 'features/PacksList/components/Settings/OwnerSwitcher';
 import { Search } from 'features/PacksList/components/Settings/Search';
-import styles from 'features/PacksList/components/Settings/style/Settings.module.css';
+import styles from 'features/PacksList/components/Settings/style/settings.module.css';
 
 export const styleDisabled = {
   opacity: '0.5',

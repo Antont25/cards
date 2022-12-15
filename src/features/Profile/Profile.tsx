@@ -3,11 +3,11 @@ import React, { ChangeEvent, ReactElement, useRef } from 'react';
 import Paper from '@mui/material/Paper/Paper';
 import { Navigate, NavLink } from 'react-router-dom';
 
-import styles from './style/Profile.module.css';
+import styles from 'features/Profile/style/profile.module.css';
 
 import { setAppErrorAC } from 'app/actions';
 import img from 'assets/images/profileAvatar.jpg';
-import { EditableSpan } from 'common/components/editableSpan';
+import { EditableSpan } from 'common/components/EditableSpan';
 import { RoutePath } from 'common/enums';
 import { useAppDispatch, useAppSelector } from 'common/hooks';
 import { selectAvatar, selectEmail, selectIsAuth, selectName } from 'common/store';

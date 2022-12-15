@@ -12,7 +12,7 @@ import { useFormik } from 'formik';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { setAppStatusAC } from 'app/actions';
-import { ErrorSnackbar } from 'common/components/errorSnackbar/ErrorSnackbar';
+import { ErrorSnackbar } from 'common/components/ErrorSnackbar/ErrorSnackbar';
 import { RoutePath } from 'common/enums';
 import { useAppDispatch } from 'common/hooks/useAppDispatch';
 import { useAppSelector } from 'common/hooks/useAppSelector';

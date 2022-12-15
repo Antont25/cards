@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 
-import styles from './style/PacksTitle.module.css';
+import styles from 'features/PacksList/components/PacksTitle/style/packs-title.module.css';
 
 import { useAppSelector } from 'common/hooks/useAppSelector';
 import { selectCardPacks } from 'common/store';

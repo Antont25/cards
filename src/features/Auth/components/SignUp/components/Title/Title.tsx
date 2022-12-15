@@ -3,7 +3,7 @@ import React, { memo, ReactElement } from 'react';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { Avatar, Typography } from '@mui/material';
 
-import style from 'features/Auth/components/SignUp/components/Title/style/Title.module.css';
+import style from 'features/Auth/components/SignUp/components/Title/style/title.module.css';
 
 const avatarStyle = { backgroundColor: 'white' };
 

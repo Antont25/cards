@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { CustomTableHead } from 'common/components/table/table-head/CustomTableHead';
+import { CustomTableHead } from 'common/components/Table/TableHead/CustomTableHead';
 import { useAppDispatch } from 'common/hooks/useAppDispatch';
 import { useAppSelector } from 'common/hooks/useAppSelector';
 import { selectPackUserId, selectMyID } from 'common/store';

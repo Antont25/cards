@@ -2,8 +2,8 @@ import React, { ReactElement } from 'react';
 
 import Button from '@mui/material/Button/Button';
 
-import { BackToPacksLink } from 'common/components/back-to-packs-link';
-import styles from 'features/Pack/style/NewPack.module.css';
+import { BackToPacksLink } from 'common/components/BackToPacksLink';
+import styles from 'features/Pack/style/new-pack.module.css';
 
 export const NewPack = (): ReactElement => {
   const onAddNewCardClick = (): void => {

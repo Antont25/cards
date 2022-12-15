@@ -1,4 +1,3 @@
-import { instance } from 'app/api/app-api';
 import {
   DataCreateCardType,
   QueryParamsCardType,
@@ -8,6 +7,7 @@ import {
   UpdateCardGradeResponseType,
   UpdateData,
 } from 'features/PacksList/types';
+import {instance} from "app/api";
 
 export const apiCards = {
   getCards(params: QueryParamsCardType) {

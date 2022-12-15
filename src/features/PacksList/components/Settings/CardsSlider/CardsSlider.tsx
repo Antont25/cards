@@ -11,7 +11,7 @@ import {
   selectMinCardsCount,
 } from 'common/store';
 import { updateQueryParamsAC } from 'features/PacksList/actions';
-import styles from 'features/PacksList/components/Settings/CardsSlider/style/CardsSlider.module.css';
+import styles from 'features/PacksList/components/Settings/CardsSlider/style/cards-slider.module.css';
 import { styleDisabled } from 'features/PacksList/components/Settings/Settings';
 import { OwnerSwitcherType } from 'features/PacksList/types';
 

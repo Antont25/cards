@@ -5,8 +5,8 @@ import { Box, IconButton, Typography } from '@mui/material';
 import Button from '@mui/material/Button/Button';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
-import { KebabLearnMenu } from 'common/components/learn-menu/KebabLearnMenu';
-import { Paginator } from 'common/components/pagination/Paginator';
+import { KebabLearnMenu } from 'common/components/LearnMenu/KebabLearnMenu';
+import { Paginator } from 'common/components/Pagination/Paginator';
 import { RoutePath } from 'common/enums';
 import { useAppDispatch } from 'common/hooks/useAppDispatch';
 import { useAppSelector } from 'common/hooks/useAppSelector';
@@ -33,7 +33,7 @@ import {
   fetchUpdateCard,
 } from 'features/PacksList/reducers/cardsReducer';
 import { CreateCardType } from 'features/PacksList/types';
-import styles from 'features/Profile/style/Profile.module.css';
+import styles from 'features/Profile/style/profile.module.css';
 
 export const Cards = (): ReactElement => {
   const navigate = useNavigate();

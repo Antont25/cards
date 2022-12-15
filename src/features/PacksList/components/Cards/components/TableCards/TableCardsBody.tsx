@@ -4,8 +4,8 @@ import { Box, Rating, TableBody, TableCell, TableRow } from '@mui/material';
 
 import deleteImg from 'assets/images/cardPackBtns/delete.svg';
 import edit from 'assets/images/cardPackBtns/edit.svg';
-import { DeleteModal } from 'common/components/modals/delete-modal/DeleteModal';
-import styles from 'common/components/table/style/Table.module.css';
+import { DeleteModal } from 'common/components/Modals/DeleteModal/DeleteModal';
+import styles from 'common/components/Table/style/table.module.css';
 import common from 'common/style/style.module.css';
 import { dateConverter, timeConverter } from 'common/utils/date-converter';
 import { EditAddModalCard } from 'features/PacksList/components/Cards/components/AddEditModalCards';

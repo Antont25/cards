@@ -1,10 +1,10 @@
-import { instance } from 'app/api/app-api';
 import {
   NewPackType,
   PacksGetParamsType,
   PacksType,
   UpdatePackType,
 } from 'features/PacksList/types';
+import {instance} from "app/api";
 
 export const apiPacks = {
   getPacks(params: PacksGetParamsType) {

@@ -15,7 +15,7 @@ import { RoutePath } from 'common/enums';
 import { useAppSelector, useAppDispatch } from 'common/hooks';
 import { selectIsAuth } from 'common/store';
 import commonStyle from 'common/style/style.module.css';
-import styles from 'features/Auth/components/Login/style/Login.module.css';
+import styles from 'features/Auth/components/Login/style/login.module.css';
 import { LoginTC } from 'features/Auth/reducer/authReducer';
 import { LoginPostDataType } from 'features/Auth/types';
 

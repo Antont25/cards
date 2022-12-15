@@ -3,8 +3,8 @@ import React, { ReactElement } from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-import styles from './style/AppBar.module.css';
-import { UserInfo } from './userInfo';
+import styles from 'common/components/AppBar/style/app-bar.module.css';
+import { UserInfo } from './UserInfo';
 
 import logo from 'assets/images/logo1.jpeg';
 import { RoutePath } from 'common/enums';

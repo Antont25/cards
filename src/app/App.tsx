@@ -1,11 +1,11 @@
 import React, { ReactElement, useEffect } from 'react';
-import 'app/style/App.module.css';
+import 'app/style/app.module.css';
 
 import { LinearProgress } from '@mui/material';
 
-import { AppBar } from 'common/components/app-bar/AppBar';
-import { ErrorSnackbar } from 'common/components/errorSnackbar/ErrorSnackbar';
-import { Loading } from 'common/components/loading';
+import { AppBar } from 'common/components/AppBar/AppBar';
+import { ErrorSnackbar } from 'common/components/ErrorSnackbar/ErrorSnackbar';
+import { Loading } from 'common/components/Loading';
 import { WhichRouting } from 'common/components/routes/WhichRouting';
 import { useAppDispatch } from 'common/hooks/useAppDispatch';
 import { useAppSelector } from 'common/hooks/useAppSelector';

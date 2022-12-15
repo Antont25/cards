@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 import bgImg from 'assets/images/filter.svg';
 import { useAppDispatch } from 'common/hooks';
 import { filterPacksWithOwnerSwitcherAC } from 'features/PacksList/actions';
-import styles from 'features/PacksList/components/Settings/DisableFilterButton/style/DisableFilterButton.module.css';
+import styles from 'features/PacksList/components/Settings/DisableFilterButton/style/disable-filter-button.module.css';
 
 type DisableFilterType = {
   setClearFilter: (value: boolean) => void;

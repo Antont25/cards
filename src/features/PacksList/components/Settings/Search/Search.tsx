@@ -1,7 +1,7 @@
 import React, { ChangeEvent, memo, ReactElement, useEffect, useState } from 'react';
 
 import { useDebounce } from 'common/hooks';
-import styles from 'features/PacksList/components/Settings/Search/style/Search.module.css';
+import styles from 'features/PacksList/components/Settings/Search/style/search.module.css';
 import { styleDisabled } from 'features/PacksList/components/Settings/Settings';
 
 type SearchPropsType = {
